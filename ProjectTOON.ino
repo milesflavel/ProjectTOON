@@ -21,10 +21,8 @@ void loop() {
     digitalWrite(cols[c], LOW);
     for (int r = 0; r < ROWCOUNT; r++) {
       if (pressKey(keyMatrix[c][r], (digitalRead(rows[r]) == LOW ? true : false))) {
-        Serial.print("Keymap value = ");
-        Serial.println(keymap[0][keyMatrix[c][r]->id]);
-        Serial.print("Key ESC value = ");
-        Serial.println(ESC);
+        if (keyMatrix[c][r]->pressed) Keyboard.press(keymap[0][keyMatrix[c][r]->id]);
+        else Keyboard.release(keymap[0][keyMatrix[c][r]->id]);
       }
     }
     digitalWrite(cols[c], HIGH);
