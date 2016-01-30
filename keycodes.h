@@ -103,47 +103,47 @@
 #define SPC  KEY_SPACE
 
 // MIDI layer
-#define M059 ( 59  | 0x4000 )
-#define M060 ( 60  | 0x4000 )
-#define M061 ( 61  | 0x4000 )
-#define M062 ( 59  | 0x4000 )
-#define M063 ( 59  | 0x4000 )
-#define M064 ( 59  | 0x4000 )
-#define M065 ( 59  | 0x4000 )
-#define M066 ( 59  | 0x4000 )
-#define M067 ( 59  | 0x4000 )
-#define M068 ( 59  | 0x4000 )
-#define M069 ( 59  | 0x4000 )
-#define M070 ( 59  | 0x4000 )
-#define M071 ( 59  | 0x4000 )
-#define M072 ( 59  | 0x4000 )
-#define M073 ( 59  | 0x4000 )
-#define M074 ( 59  | 0x4000 )
-#define M075 ( 59  | 0x4000 )
-#define M076 ( 59  | 0x4000 )
-#define M077 ( 59  | 0x4000 )
-#define M078 ( 59  | 0x4000 )
-#define M079 ( 59  | 0x4000 )
-#define M080 ( 59  | 0x4000 )
-#define M081 ( 59  | 0x4000 )
-#define M082 ( 59  | 0x4000 )
-#define M083 ( 59  | 0x4000 )
-#define M084 ( 59  | 0x4000 )
-#define M085 ( 59  | 0x4000 )
-#define M086 ( 59  | 0x4000 )
-#define M087 ( 59  | 0x4000 )
-#define M088 ( 59  | 0x4000 )
-#define M089 ( 59  | 0x4000 )
-#define M090 ( 59  | 0x4000 )
-#define M091 ( 59  | 0x4000 )
-#define M092 ( 59  | 0x4000 )
-#define M093 ( 59  | 0x4000 )
-#define M094 ( 59  | 0x4000 )
-#define M095 ( 59  | 0x4000 )
-#define M096 ( 59  | 0x4000 )
-#define M097 ( 59  | 0x4000 )
-#define M098 ( 59  | 0x4000 )
-#define M099 ( 59  | 0x4000 )
-#define M100 ( 59  | 0x4000 )
-#define M101 ( 59  | 0x4000 )
-#define M102 ( 59  | 0x4000 )
+#define M059 59
+#define M060 60
+#define M061 61
+#define M062 62
+#define M063 63
+#define M064 64
+#define M065 65
+#define M066 66
+#define M067 67
+#define M068 68
+#define M069 69
+#define M070 70
+#define M071 71
+#define M072 72
+#define M073 73
+#define M074 74
+#define M075 75
+#define M076 76
+#define M077 77
+#define M078 78
+#define M079 79
+#define M080 80
+#define M081 81
+#define M082 82
+#define M083 83
+#define M084 84
+#define M085 85
+#define M086 86
+#define M087 87
+#define M088 88
+#define M089 89
+#define M090 90
+#define M091 91
+#define M092 92
+#define M093 93
+#define M094 94
+#define M095 95
+#define M096 96
+#define M097 97
+#define M098 98
+#define M099 99
+#define M100 100
+#define M101 101
+#define M102 102

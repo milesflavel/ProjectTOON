@@ -2,22 +2,16 @@
   Project TOON (The Other Other Norseboard)
   Mechanical keyboard and MIDI controller hybrid
   
-  Code started January 25th 2016,
-  loosely referencing prior work on the original Norseboard
+  Code started January 25th 2016
+  Loosely referencing prior work on the original Norseboard and TMK Keyboard
  */
-#define ROWCOUNT 6
-#define COLCOUNT 17
+
+#include "pins.h"
 #include "key.h"
 #include "matrix.h"
- 
-int rows[] = { 14, 13, 3, 2, 1, 0 };
-int cols[] = { 23, 10, 9, 22, 5, 24, 21, 20, 19, 18, 17, 16, 12, 11, 6, 7, 8 };
 
-void setup() {                
-  for (int r = 0; r < ROWCOUNT; r++)
-    pinMode(r, INPUT);
-  for (int c = 0; c < COLCOUNT; c++)
-    pinMode(c, OUTPUT); 
+void setup() {
+  pinsInit();
 }
 
 // the loop routine runs over and over again forever:
