@@ -12,14 +12,26 @@
 
 void setup() {
   pinsInit();
+  Serial.begin(9600);
+  Keyboard.begin();
 }
 
-// the loop routine runs over and over again forever:
 void loop() {
-  usbMIDI.sendNoteOn(60, 99, 1);  // 60 = C4
-  usbMIDI.sendNoteOn(60, 99, 1);  // 60 = C4
-  usbMIDI.sendNoteOn(60, 99, 1);  // 60 = C4
-  delay(1000);               // wait for a second
-  usbMIDI.sendNoteOff(60, 0, 1);  // 60 = C4
-  delay(1000);               // wait for a second
+  for (int c = 0; c < COLCOUNT; c++) {
+    digitalWrite(cols[c], LOW);
+    for (int r = 0; r < ROWCOUNT; r++) {
+      //delay(10);
+      bool keyPressed = (digitalRead(rows[r]) == LOW) ? true : false;
+      /*
+      Serial.print("[");
+      Serial.print(c);
+      Serial.print(",");
+      Serial.print(r);
+      Serial.print("] ");
+      Serial.println(keyPressed);
+      */
+      pressKey(keyMatrix[c][r], keyPressed);
+    }
+    digitalWrite(cols[c], HIGH);
+  }
 }

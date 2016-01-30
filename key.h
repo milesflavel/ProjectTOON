@@ -12,8 +12,18 @@ struct Key {
 
 // Function to toggle the state of a key
 void toggleKey(struct Key *key) {
-  if (!key->pressed) key->pressed = true;
-  else key->pressed = false;
+  if (!key->pressed) {
+    key->pressed = true;
+    Serial.print("Key ");
+    Serial.print(key->id);
+    Serial.println(" pressed");   
+  }
+  else {
+    key->pressed = false;
+    Serial.print("Key ");
+    Serial.print(key->id);
+    Serial.println(" released");   
+  }
 }
 
 // Function to check if the key is still bouncing and fire off a toggle if it has stopped
@@ -24,7 +34,10 @@ void bounceKey(struct Key *key) {
     key->bounce++;
   }
   else key->bounce = 0;
-  if (key->bounce >= BOUNCELIMIT) toggleKey(key);
+  if (key->bounce >= BOUNCELIMIT) {
+    toggleKey(key);
+    key->bounce = 0;
+  }
 }
 
 // Function to check if the key is still bouncing and fire off a toggle if it has stopped
