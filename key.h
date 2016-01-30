@@ -27,7 +27,7 @@ void toggleKey(struct Key *key) {
 }
 
 // Function to check if the key is still bouncing and fire off a toggle if it has stopped
-void bounceKey(struct Key *key) {
+bool bounceKey(struct Key *key) {
   //Changed and not checking for bounce OR Not changed and already checking for bounce
   if ((key->nowPressed != key->wasPressed && key->bounce == 0) ||
       (key->nowPressed == key->wasPressed && key->bounce > 0)) {
@@ -35,14 +35,17 @@ void bounceKey(struct Key *key) {
   }
   else key->bounce = 0;
   if (key->bounce >= BOUNCELIMIT) {
-    toggleKey(key);
     key->bounce = 0;
+    toggleKey(key);
+    return true;
   }
+  return false;
 }
 
 // Function to check if the key is still bouncing and fire off a toggle if it has stopped
-void pressKey(struct Key *key, bool isPressed) {
+bool pressKey(struct Key *key, bool isPressed) {
   key->wasPressed = key->nowPressed;
   key->nowPressed = isPressed;
-  bounceKey(key);
+  if (bounceKey(key) == true) return true;
+  else return false;
 }

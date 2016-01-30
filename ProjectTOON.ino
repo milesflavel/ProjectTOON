@@ -20,17 +20,12 @@ void loop() {
   for (int c = 0; c < COLCOUNT; c++) {
     digitalWrite(cols[c], LOW);
     for (int r = 0; r < ROWCOUNT; r++) {
-      //delay(10);
-      bool keyPressed = (digitalRead(rows[r]) == LOW) ? true : false;
-      /*
-      Serial.print("[");
-      Serial.print(c);
-      Serial.print(",");
-      Serial.print(r);
-      Serial.print("] ");
-      Serial.println(keyPressed);
-      */
-      pressKey(keyMatrix[c][r], keyPressed);
+      if (pressKey(keyMatrix[c][r], (digitalRead(rows[r]) == LOW ? true : false))) {
+        Serial.print("Keymap value = ");
+        Serial.println(keymap[0][keyMatrix[c][r]->id]);
+        Serial.print("Key ESC value = ");
+        Serial.println(ESC);
+      }
     }
     digitalWrite(cols[c], HIGH);
   }
