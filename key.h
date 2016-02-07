@@ -14,15 +14,9 @@ struct Key {
 void toggleKey(struct Key *key) {
   if (!key->pressed) {
     key->pressed = true;
-    Serial.print("Key ");
-    Serial.print(key->id);
-    Serial.println(" pressed");   
   }
   else {
     key->pressed = false;
-    Serial.print("Key ");
-    Serial.print(key->id);
-    Serial.println(" released");   
   }
 }
 

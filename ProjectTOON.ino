@@ -9,22 +9,19 @@
 #include "pins.h"
 #include "key.h"
 #include "matrix.h"
+#include "output.h"
 
 void setup() {
   pinsInit();
+  outputInit();
   Serial.begin(9600);
   Keyboard.begin();
 }
 
 void loop() {
   for (int c = 0; c < COLCOUNT; c++) {
-    digitalWrite(cols[c], LOW);
     for (int r = 0; r < ROWCOUNT; r++) {
-      if (pressKey(keyMatrix[c][r], (digitalRead(rows[r]) == LOW ? true : false))) {
-        if (keyMatrix[c][r]->pressed) Keyboard.press(keymap[0][keyMatrix[c][r]->id]);
-        else Keyboard.release(keymap[0][keyMatrix[c][r]->id]);
-      }
+      checkKey(c, r);
     }
-    digitalWrite(cols[c], HIGH);
   }
 }
