@@ -9,11 +9,12 @@
 #include "pins.h"
 #include "key.h"
 #include "matrix.h"
+#include "mode.h"
 #include "output.h"
 
 void setup() {
   pinsInit();
-  outputInit();
+  modeInit();
   Serial.begin(9600);
   Keyboard.begin();
 }
@@ -24,4 +25,5 @@ void loop() {
       checkKey(c, r);
     }
   }
+  checkMode();
 }

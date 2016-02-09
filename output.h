@@ -1,13 +1,3 @@
-// Define the output modes
-#define MODE_USBHID 0
-#define MODE_USBMIDI 1
-#define MODE_MIDI 2
-int outputMode;
-
-void outputInit() {
-  outputMode = MODE_USBHID;
-}
-
 // Checks if a key's state has changed and performs the associated output function
 void checkKey(int c, int r) {
   digitalWrite(cols[c], LOW);
