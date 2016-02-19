@@ -10,11 +10,13 @@
 #include "key.h"
 #include "matrix.h"
 #include "mode.h"
+#include "midi.h"
 #include "output.h"
 
 void setup() {
   pinsInit();
   modeInit();
+  midiInit();
   Serial.begin(9600);
   Keyboard.begin();
 }
