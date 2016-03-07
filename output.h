@@ -11,7 +11,7 @@ void checkKey(int c, int r) {
           usbMIDI.sendNoteOn(getKey(1, c, r), 99, 1);
           break;
         case MODE_MIDI:
-          midiNoteOn(0x90, getKey(1, c, r), 99);
+          midiNoteOn(getKey(1, c, r), 99);
           break;
       }
     }
@@ -24,7 +24,7 @@ void checkKey(int c, int r) {
           usbMIDI.sendNoteOff(getKey(1, c, r), 99, 1);
           break;
         case MODE_MIDI:
-          midiNoteOff(0x90, getKey(1, c, r));
+          midiNoteOff(getKey(1, c, r));
           break;
       }
     }
