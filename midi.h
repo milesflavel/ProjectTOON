@@ -5,7 +5,7 @@
 // Pitch and modulation values and change thresholds
 unsigned int midiPitch = 0;
 unsigned int midiMod = 0;
-const int midiPitchModThreshold = 192;
+const int midiPitchThreshold = 192;
 
 void midiInit() {
   pinMode(MIDI_PITCH_PIN, INPUT);
@@ -33,7 +33,7 @@ void midiPitchBend(int bend) {
 
 void checkMidiPitch() {
   unsigned int pitch = constrain((analogRead(MIDI_PITCH_PIN) - 517) * 63 + 8192, 1, 16384); //Analog value 0-1023 subract half that range to make center 0, multiplied by 63, add 2^13 (half of 14-bit integer max)
-  if (!((pitch >= midiPitch - midiPitchModThreshold) && (pitch <= midiPitch + midiPitchModThreshold))) {
+  if (!((pitch >= midiPitch - midiPitchThreshold) && (pitch <= midiPitch + midiPitchThreshold))) {
     switch (outputMode) {
       case MODE_USBMIDI:
         usbMIDI.sendPitchBend(pitch, 1);
@@ -45,7 +45,7 @@ void checkMidiPitch() {
     midiPitch = pitch;
   }
   // Fallback to 8192 (no pitch bend) if close enough
-  else if (!((pitch >= 8192 - midiPitchModThreshold + 8) && (pitch <= 8192 + midiPitchModThreshold - 8))) {
+  else if ((pitch >= 8192 - midiPitchThreshold - 8) && (pitch <= 8192 + midiPitchThreshold + 8)) {
     midiPitch = 8192;
     switch (outputMode) {
       case MODE_USBMIDI:
@@ -58,3 +58,23 @@ void checkMidiPitch() {
   }
 }
 
+void midiModulation(int value) {
+  Serial1.write(0xB0);
+  Serial1.write(0x00);
+  Serial1.write(value);
+}
+
+void checkMidiMod() {
+  unsigned int mod = constrain(map(analogRead(MIDI_MOD_PIN), 370, 615, 0, 127), 0, 127);
+  if (mod != midiMod) {
+    switch (outputMode) {
+      case MODE_USBMIDI:
+        usbMIDI.sendControlChange(0, mod, 1);
+        break;
+      case MODE_MIDI:
+        midiModulation(mod);
+        break;
+    }
+    midiMod = mod;
+  }
+}

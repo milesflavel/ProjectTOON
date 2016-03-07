@@ -29,4 +29,5 @@ void loop() {
   }
   checkMode();
   checkMidiPitch();
+  checkMidiMod();
 }
