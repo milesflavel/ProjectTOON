@@ -60,7 +60,7 @@ void checkMidiPitch() {
 
 void midiModulation(int value) {
   Serial1.write(0xB0);
-  Serial1.write(0x00);
+  Serial1.write(0x01);
   Serial1.write(value);
 }
 
